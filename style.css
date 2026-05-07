@@ -86,7 +86,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
   */
   background-image:
     linear-gradient(160deg, rgba(0,15,31,0.82) 0%, rgba(0,31,63,0.72) 50%, rgba(10,46,84,0.85) 100%),
-    url('https://placehold.co/1200x1800/001F3F/C5A059?text=Foto+Hero');
+    url('/assets/cover.jpg');
   background-size: cover;
   background-position: center top;
 }
@@ -114,15 +114,47 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 /* Ornamen sudut */
 .corner-ornament {
   position: absolute;
-  width: 90px; height: 90px;
+  width: 45px; height: 45px;
   border-color: rgba(197,160,89,0.45);
   border-style: solid;
   pointer-events: none;
 }
-.corner-ornament.top-left     { top: 28px; left: 28px;  border-width: 1.5px 0 0 1.5px; }
+/* .corner-ornament.top-left     { top: 28px; left: 28px;  border-width: 1.5px 0 0 1.5px; }
 .corner-ornament.top-right    { top: 28px; right: 28px; border-width: 1.5px 1.5px 0 0; }
 .corner-ornament.bottom-left  { bottom: 28px; left: 28px;  border-width: 0 0 1.5px 1.5px; }
-.corner-ornament.bottom-right { bottom: 28px; right: 28px; border-width: 0 1.5px 1.5px 0; }
+.corner-ornament.bottom-right { bottom: 28px; right: 28px; border-width: 0 1.5px 1.5px 0; } */
+
+.corner-ornament.top-left { 
+  top: 15px !important; 
+  left: 15px !important; 
+  right: auto !important; 
+  bottom: auto !important;
+  border-width: 1.5px 0 0 1.5px; /* Siku atas & kiri saja */
+}
+
+.corner-ornament.top-right { 
+  top: 15px !important; 
+  right: 15px !important; 
+  left: auto !important; 
+  bottom: auto !important;
+  border-width: 1.5px 1.5px 0 0; /* Siku atas & kanan saja */
+}
+
+.corner-ornament.bottom-left { 
+  bottom: 15px !important; 
+  left: 15px !important; 
+  top: auto !important; 
+  right: auto !important;
+  border-width: 0 0 1.5px 1.5px; /* Siku bawah & kiri saja */
+}
+
+.corner-ornament.bottom-right { 
+  bottom: 15px !important; 
+  right: 15px !important; 
+  top: auto !important; 
+  left: auto !important;
+  border-width: 0 1.5px 1.5px 0; /* Siku bawah & kanan saja */
+}
 
 /* Konten hero */
 .hero-content {
@@ -202,7 +234,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 36px;
+  padding: 14px 18px;
   border: 1.5px solid var(--gold);
   color: var(--navy);
   background: var(--gold);
@@ -794,7 +826,7 @@ section { padding: clamp(60px, 10vw, 110px) 0; }
   .countdown-item { min-width: 60px; padding: 14px 12px; }
   .countdown-num  { font-size: 1.8rem; }
 
-  .corner-ornament { width: 50px; height: 50px; top: 16px !important; right: 16px !important; bottom: 16px !important; left: 16px !important; }
+  .corner-ornament { width: 45px; height: 45px; top: 15px !important; right: 15px !important; bottom: 16px !important; left: 16px !important; }
 
   .audio-btn { width: 56px; height: 56px; }
   .audio-btn svg { width: 24px; height: 24px; }

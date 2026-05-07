@@ -68,7 +68,7 @@ function openInvitation() {
    ============================================================ */
 (function initCountdown() {
   // [GANTI] Format: 'YYYY-MM-DDTHH:MM:SS'
-  const targetDate = new Date('2026-02-14T08:00:00');
+  const targetDate = new Date('2026-07-12T10:30:00');
 
   function updateCountdown() {
     const now  = new Date();
@@ -184,12 +184,61 @@ function toggleGiftSection() {
 /* ============================================================
    7. SALIN NOMOR REKENING
    ============================================================ */
+// function copyAccount(elementId, btn) {
+//   const el = document.getElementById(elementId);
+//   if (!el) return;
+
+//   // Ambil teks, bersihkan spasi
+//   const text = el.textContent.replace(/\s+/g, '');
+
+//   navigator.clipboard.writeText(text).then(() => {
+//     const original = btn.innerHTML;
+//     btn.innerHTML = `
+//       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+//         <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+//       </svg>
+//       Tersalin!
+//     `;
+//     btn.classList.add('copied');
+//     setTimeout(() => {
+//       btn.innerHTML = original;
+//       btn.classList.remove('copied');
+//     }, 2500);
+//   }).catch(() => {
+//     // Fallback untuk browser lama
+//     const ta = document.createElement('textarea');
+//     ta.value = text;
+//     ta.style.cssText = 'position:fixed;opacity:0;';
+//     document.body.appendChild(ta);
+//     ta.select();
+//     document.execCommand('copy');
+//     document.body.removeChild(ta);
+
+//     const original = btn.innerHTML;
+//     btn.innerHTML = `✓ Tersalin!`;
+//     btn.classList.add('copied');
+//     setTimeout(() => {
+//       btn.innerHTML = original;
+//       btn.classList.remove('copied');
+//     }, 2500);
+//   });
+// }
+
 function copyAccount(elementId, btn) {
   const el = document.getElementById(elementId);
   if (!el) return;
 
-  // Ambil teks, bersihkan spasi
-  const text = el.textContent.replace(/\s+/g, '');
+  // Gunakan innerText (bukan textContent) agar format baris baru (<br>) pada alamat tetap terbaca sebagai enter
+  let text = el.innerText;
+
+  // Logika pemisah:
+  // Jika ID-nya adalah accountNum1 (rekening bank), hapus semua spasi.
+  // Jika selain itu (misal accountNum2 untuk alamat), biarkan spasi utuh, cukup bersihkan ujungnya saja (.trim).
+  if (elementId === 'accountNum1') {
+    text = text.replace(/\s+/g, '');
+  } else {
+    text = text.trim();
+  }
 
   navigator.clipboard.writeText(text).then(() => {
     const original = btn.innerHTML;
