@@ -44,12 +44,60 @@ html {
 }
 
 body {
+  position: relative;
   background-color: var(--navy);
   color: var(--cream);
   font-family: var(--font-body);
   font-weight: 300;
   overflow-x: hidden;
   line-height: 1.7;
+}
+
+/* Membuat lapisan tekstur di atas background navy */
+body::before {
+  content: "";
+  position: fixed;
+  /* Tekstur diam di tempat walau di-scroll */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  /* PENTING: Ganti URL ini dengan nama file teksturmu */
+  background-image: url('/assets/tekstur.png');
+
+  /* Jika teksturnya pola kecil (bunga/kertas), gunakan repeat. 
+     Jika teksturnya gambar besar, ganti menjadi: background-size: cover; */
+  background-repeat: round;
+  background-size: 400px;
+  /* Atur besar-kecilnya serat/motif tekstur */
+
+  /* Kontrol Ketebalan Tekstur (0.0 sangat pudar, 1.0 sangat pekat) */
+  opacity: 0.5;
+
+  /* (Opsional) Efek Blend agar tekstur menyatu sempurna dengan warna navy */
+  mix-blend-mode: color-burn;
+
+  /* Wajib ada agar lapisan ini tidak memblokir tombol saat diklik */
+  pointer-events: none;
+  z-index: 0;
+  /* Taruh di layer paling bawah, tapi di atas warna Navy */
+}
+
+/* Pastikan konten utama memiliki z-index lebih tinggi dari tekstur */
+.container,
+.hero-section,
+section {
+  position: relative;
+  z-index: 2;
+}
+
+/* Memaksa section menjadi transparan agar tekstur body terlihat */
+section,
+.hero-section,
+.section-hadiah,
+.section-galeri {
+  background-color: transparent !important;
 }
 
 img {
@@ -411,11 +459,24 @@ section {
   margin: 28px auto;
 }
 
+
+
 /* ---- Opening section ---- */
-.section-opening {
+/* .section-opening {
   text-align: center;
   background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
   border-bottom: 1px solid rgba(197, 160, 89, 0.12);
+} */
+
+.section-opening {
+  text-align: center;
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--navy) 50%, transparent) 0%,
+      color-mix(in srgb, var(--navy-mid) 50%, transparent) 100%) !important;
+
+  /* Efek blur agar tekstur menyatu dengan teks */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .ayat-arabic {
@@ -585,7 +646,13 @@ section {
    ============================================================ */
 .section-acara {
   text-align: center;
-  background: linear-gradient(160deg, var(--navy-mid) 0%, var(--navy) 100%);
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--navy) 50%, transparent) 0%,
+      color-mix(in srgb, var(--navy-mid) 50%, transparent) 100%) !important;
+
+  /* Efek blur agar tekstur menyatu dengan teks */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .events-wrapper {
@@ -897,7 +964,13 @@ section {
    ============================================================ */
 .section-hadiah {
   text-align: center;
-  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%);
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--navy) 50%, transparent) 0%,
+      color-mix(in srgb, var(--navy-mid) 50%, transparent) 100%) !important;
+
+  /* Efek blur agar tekstur menyatu dengan teks */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 /* Tombol Reveal */
