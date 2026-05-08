@@ -71,12 +71,12 @@ function openInvitation() {
   const targetDate = new Date('2026-07-12T10:30:00');
 
   function updateCountdown() {
-    const now  = new Date();
+    const now = new Date();
     const diff = targetDate - now;
 
     if (diff <= 0) {
       // Hari H telah tiba!
-      ['cntDays','cntHours','cntMins','cntSecs'].forEach(id => {
+      ['cntDays', 'cntHours', 'cntMins', 'cntSecs'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.textContent = '00';
       });
@@ -85,17 +85,17 @@ function openInvitation() {
       return;
     }
 
-    const days  = Math.floor(diff / 86400000);
+    const days = Math.floor(diff / 86400000);
     const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins  = Math.floor((diff % 3600000)  / 60000);
-    const secs  = Math.floor((diff % 60000)    / 1000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
 
     const pad = n => String(n).padStart(2, '0');
 
-    setEl('cntDays',  pad(days));
+    setEl('cntDays', pad(days));
     setEl('cntHours', pad(hours));
-    setEl('cntMins',  pad(mins));
-    setEl('cntSecs',  pad(secs));
+    setEl('cntMins', pad(mins));
+    setEl('cntSecs', pad(secs));
   }
 
   function setEl(id, val) {
@@ -147,7 +147,7 @@ function openInvitation() {
    ============================================================ */
 function toggleGiftSection() {
   const section = document.getElementById('giftAccounts');
-  const btn     = document.getElementById('btnRevealGift');
+  const btn = document.getElementById('btnRevealGift');
   if (!section || !btn) return;
 
   const isHidden = section.style.display === 'none' || section.style.display === '';
@@ -276,9 +276,9 @@ function copyAccount(elementId, btn) {
 /* ============================================================
    8. FLOATING AUDIO PLAYER
    ============================================================ */
-const music   = document.getElementById('bgMusic');
+const music = document.getElementById('bgMusic');
 const audioBtn = document.getElementById('audioBtn');
-let isPlaying  = false;
+let isPlaying = false;
 
 function toggleMusic() {
   if (!music) return;
@@ -297,7 +297,7 @@ function toggleMusic() {
 
 function setAudioIcon(playing) {
   if (!audioBtn) return;
-  const iconPlay  = audioBtn.querySelector('.icon-play');
+  const iconPlay = audioBtn.querySelector('.icon-play');
   const iconPause = audioBtn.querySelector('.icon-pause');
   if (!iconPlay || !iconPause) return;
 
@@ -356,6 +356,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   `;
   document.head.appendChild(style);
 })();
+
+/* ============================================================
+   11. GALERI SLIDER
+   ============================================================ */
+
+// Inisialisasi Swiper Gallery (Menunggu halaman selesai dimuat)
+document.addEventListener("DOMContentLoaded", function () {
+  const swiper = new Swiper('.myGallerySwiper', {
+    loop: true,
+    grabCursor: true,
+    speed: 1000, // <-- Tambahkan baris ini (kecepatan transisi 800ms)
+    autoplay: {
+      delay: 1000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+});
 
 /* ============================================================
    CATATAN PENGEMBANG
