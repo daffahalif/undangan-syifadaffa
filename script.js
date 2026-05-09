@@ -68,7 +68,8 @@ function openInvitation() {
    ============================================================ */
 (function initCountdown() {
   // [GANTI] Format: 'YYYY-MM-DDTHH:MM:SS'
-  const targetDate = new Date('2026-07-12T10:30:00');
+  // const targetDate = new Date('2026-07-12T10:30:00');
+  const targetDate = new Date('2026-09-20T10:30:00');
 
   function updateCountdown() {
     const now = new Date();
