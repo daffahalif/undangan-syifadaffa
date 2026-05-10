@@ -73,7 +73,7 @@ body::before {
   /* Atur besar-kecilnya serat/motif tekstur */
 
   /* Kontrol Ketebalan Tekstur (0.0 sangat pudar, 1.0 sangat pekat) */
-  opacity: 0.5;
+  opacity: 1;
 
   /* (Opsional) Efek Blend agar tekstur menyatu sempurna dengan warna navy */
   mix-blend-mode: color-burn;
@@ -647,12 +647,12 @@ section {
 .section-acara {
   text-align: center;
   background: linear-gradient(180deg,
-      color-mix(in srgb, var(--navy) 50%, transparent) 0%,
-      color-mix(in srgb, var(--navy-mid) 50%, transparent) 100%) !important;
+      color-mix(in srgb, var(--navy) 75%, transparent) 0%,
+      color-mix(in srgb, var(--navy-mid) 75%, transparent) 100%) !important;
 
   /* Efek blur agar tekstur menyatu dengan teks */
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 
 .events-wrapper {
