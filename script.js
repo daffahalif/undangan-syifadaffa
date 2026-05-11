@@ -69,7 +69,7 @@ function openInvitation() {
 (function initCountdown() {
   // [GANTI] Format: 'YYYY-MM-DDTHH:MM:SS'
   // const targetDate = new Date('2026-07-12T10:30:00');
-  const targetDate = new Date('2026-09-20T10:30:00');
+  const targetDate = new Date(DATA_UNDANGAN.WaktuCountdown);
 
   function updateCountdown() {
     const now = new Date();
@@ -380,6 +380,38 @@ document.addEventListener("DOMContentLoaded", function () {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
+  });
+});
+
+// DATA-VAR
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. MENGGANTI TEKS (seperti yang sebelumnya)
+  const elemenTeks = document.querySelectorAll("[data-var]");
+  elemenTeks.forEach(el => {
+    const kunci = el.getAttribute("data-var");
+    if (DATA_UNDANGAN[kunci]) {
+      el.innerText = DATA_UNDANGAN[kunci];
+    }
+  });
+
+  // 2. MENGGANTI LINK (HREF)
+  const elemenLink = document.querySelectorAll("[data-href]");
+  elemenLink.forEach(el => {
+    const kunci = el.getAttribute("data-href");
+    if (DATA_UNDANGAN[kunci]) {
+      el.href = DATA_UNDANGAN[kunci];
+    }
+  });
+
+  // 3. MENGGANTI GAMBAR [data-src]
+  const elemenGambar = document.querySelectorAll("[data-src]");
+  elemenGambar.forEach(el => {
+    const kunci = el.getAttribute("data-src");
+
+    // Jika kunci ditemukan di data.js, masukkan jalurnya ke atribut 'src'
+    if (DATA_UNDANGAN[kunci]) {
+      el.src = DATA_UNDANGAN[kunci];
+    }
   });
 });
 

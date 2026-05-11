@@ -336,14 +336,23 @@ button {
 
 .hero-date {
   font-size: 0.82rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
   color: var(--cream-dim);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 10px;
+}
+
+.date-row-masehi {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Memberi sedikit spasi rapi antar kata */
 }
 
 .date-separator {
