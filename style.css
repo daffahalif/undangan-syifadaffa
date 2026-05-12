@@ -128,7 +128,7 @@ button {
 }
 
 .container.narrow {
-  max-width: 680px;
+  max-width: 200px;
 }
 
 .hidden {
@@ -204,6 +204,10 @@ section {
 /* ============================================================
    HERO SECTION — Tetap gelap (foto latar)
    ============================================================ */
+/* ============================================================
+   HERO SECTION — Light Mode (Putih Cerah & Hangat)
+   Menggunakan palet yang senada dengan Section Opening Ayat
+   ============================================================ */
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -215,10 +219,14 @@ section {
   overflow: hidden;
   z-index: 1;
 
-  /* [GANTI] URL foto hero */
+  /* Latar belakang dasar menggunakan warna cerah dari opening ayat */
+  background-color: var(--bg-secondary);
+  /* Overlay gradien putih/cream cerah agar teks gelap terbaca jelas di atas foto */
   background-image:
-    linear-gradient(160deg, var(--hero-overlay-start) 0%, var(--hero-overlay-end) 100%),
-    url('/assets/cover.jpg');
+    linear-gradient(160deg, rgba(255, 255, 255, 0.80) 0%, rgba(244, 241, 235, 0.6) 80%),
+    /* url('/assets/cover.jpg'); */
+    url('https://i.pinimg.com/736x/df/02/1f/df021ffa1d31a69624406d7c398e1257.jpg');
+  /* url('https://i.pinimg.com/736x/e4/bf/7b/e4bf7b30791926b01a57b46f65df580a.jpg'); */
   background-size: cover;
   background-position: center top;
 }
@@ -234,7 +242,7 @@ section {
 .hero-particles span {
   position: absolute;
   border-radius: 50%;
-  background: var(--gold-light);
+  background: var(--gold);
   opacity: 0;
   animation: particleFly var(--dur, 8s) var(--delay, 0s) infinite ease-in-out;
 }
@@ -264,7 +272,8 @@ section {
   position: absolute;
   width: 45px;
   height: 45px;
-  border-color: rgba(197, 160, 89, 0.5);
+  border-color: rgba(184, 148, 58, 0.45);
+  /* Menggunakan tone gold yang lembut */
   border-style: solid;
   pointer-events: none;
 }
@@ -322,20 +331,24 @@ section {
   }
 }
 
+/* Menggunakan warna Navy untuk teks Arab (senada dengan .ayat-arabic) */
 .hero-bismillah {
   font-size: clamp(1.3rem, 4vw, 1.9rem);
-  color: #E8D5A3;
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-weight: 700;
   line-height: 1.5;
   margin-bottom: 12px;
   letter-spacing: 0.05em;
 }
 
+/* Menggunakan warna Gold (senada dengan .ayat-source) */
 .hero-subtitle {
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.42em;
   font-size: 0.72rem;
   text-transform: uppercase;
-  color: var(--gold-light);
+  color: var(--gold);
   margin-bottom: 22px;
 }
 
@@ -344,64 +357,68 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  margin-bottom: 22px;
+  margin-top: 64px;
+  margin-bottom: 64px;
 }
 
+/* Nama mempelai menggunakan Navy elegan dengan bayangan emas tipis */
 .name-groom,
 .name-bride {
   font-family: var(--font-script);
-  font-size: clamp(3.4rem, 12vw, 7rem);
-  color: #FAFAF8;
+  /* font-size: clamp(3.4rem, 12vw, 7rem); */
+  font-size: clamp(5.5rem, 16vw, 10rem);
+  color: var(--navy);
   line-height: 1;
-  text-shadow: 0 2px 28px rgba(197, 160, 89, 0.35);
+  text-shadow: 0 2px 14px rgba(184, 148, 58, 0.15);
 }
 
 .hero-ampersand {
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 3.5vw, 1.8rem);
-  color: var(--gold-light);
+  font-size: clamp(3rem, 5vw, 3rem);
+  color: var(--gold);
   font-style: italic;
   line-height: 1;
 }
 
+/* Tanggal & Label Tamu menggunakan warna sekunder (senada dengan .ayat-latin) */
 .hero-date {
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(250, 250, 248, 0.80);
+  color: var(--text-secondary);
   margin-bottom: 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 0px;
 }
 
 .date-row-masehi {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0px;
 }
 
 .date-separator {
-  color: var(--gold-light);
+  color: var(--gold);
 }
 
 .hero-guest-label {
   font-size: 0.88rem;
-  color: rgba(232, 213, 163, 0.9);
+  color: var(--text-secondary);
   margin-bottom: 36px;
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 #guestName {
-  color: #FAFAF8;
+  color: var(--navy);
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-/* Tombol Buka Undangan */
+/* Tombol Buka Undangan disesuaikan untuk latar cerah */
 .btn-open {
   display: inline-flex;
   align-items: center;
@@ -409,21 +426,20 @@ section {
   width: 52px;
   height: 52px;
   padding: 0;
-  border: 1.5px solid rgba(197, 160, 89, 0.7);
-  color: var(--gold-light);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid var(--gold);
+  color: var(--navy);
+  background: var(--bg-card);
   border-radius: var(--radius-pill);
-  backdrop-filter: blur(10px);
   transition: var(--transition);
-  box-shadow: 0 0 28px rgba(197, 160, 89, 0.2);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-open:hover {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--navy);
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #FAFAF8;
   transform: translateY(-2px);
-  box-shadow: 0 0 44px rgba(197, 160, 89, 0.5);
+  box-shadow: var(--shadow-md), var(--shadow-gold);
 }
 
 .btn-open-icon {
@@ -873,7 +889,7 @@ section {
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-sm);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   position: relative;
@@ -898,7 +914,7 @@ section {
   background: rgba(0, 31, 63, 0.2);
   width: 38px !important;
   height: 38px !important;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xl);
   backdrop-filter: blur(2px);
   transition: var(--transition-fast);
 }
@@ -931,7 +947,7 @@ section {
 @media (max-width: 768px) {
   .myGallerySwiper {
     max-width: 92%;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
   }
 
   .myGallerySwiper .swiper-slide {
@@ -1289,13 +1305,13 @@ section {
   .profile-photo-frame {
     /* width: 162px;
     height: 226px; */
-    width: 221px;
-    height: 308px;
+    width: 280px;
+    height: 400px;
     /* border-radius: 81px 81px 20px 20px; */
-    border-radius: 103px 103px 25px 25px;
+    border-radius: 999px;
   }
 
   .photo-frame-deco {
-    border-radius: 90px 90px 27px 27px;
+    border-radius: 100px 100px 10px 10px;
   }
 }

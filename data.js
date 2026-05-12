@@ -57,7 +57,7 @@ const DATA_UNDANGAN = {
     TglHijri: "18 Ramadhan 1447 H",
 
     // MEMPELAI
-    fotocpw: "https://i.pinimg.com/736x/58/9f/5c/589f5ce7066a87e1b6e211cd699970ff.jpg",
+    fotocpw: "https://i.pinimg.com/1200x/ac/e5/2a/ace52a46e80d01955373b2c61faeae17.jpg",
     cpw: "Calon Mempelai Wanitah",
     Bcpw: "Bapak J",
     Icpw: "Ibu S",
