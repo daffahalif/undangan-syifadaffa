@@ -43,7 +43,6 @@
       <p class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
       <p class="hero-subtitle">Undangan <br> Pernikahan</p>
 
-      <!-- [GANTI] Nama panggilan mempelai -->
       <h1 class="hero-names">
         <span class="name-bride">Syifa</span>
         <span class="hero-ampersand">&amp;</span>
@@ -260,29 +259,6 @@
         <div class="section-label">OUR GALLERY</div>
         <h2 class="section-title">and soon to be more</h2>
         <div class="swiper myGallerySwiper fade-in">
-          <!-- <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="/assets/foto 6.jpg" alt="Galeri 1" loading="lazy" />
-            </div>
-            <div class="swiper-slide">
-              <img src="/assets/foto 1.jpg" alt="Galeri 2" loading="lazy" />
-            </div>
-            <div class="swiper-slide">
-              <img src="/assets/foto 2.jpg" alt="Galeri 3" loading="lazy" />
-            </div>
-            <div class="swiper-slide">
-              <img src="/assets/foto 3.jpg" alt="Galeri 4" loading="lazy" />
-            </div>
-            <div class="swiper-slide">
-              <img src="/assets/foto 7.jpg" alt="Galeri 5" loading="lazy" />
-            </div>
-            <div class="swiper-slide">
-              <img src="/assets/cover.jpg" alt="Galeri 6" loading="lazy" />
-            </div>
-            <div class="swiper-slide">
-              <img src="/assets/cpw.jpg" alt="Galeri 7" loading="lazy" />
-            </div>
-          </div> -->
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <img src="" data-src="galeri1" alt="Galeri 1" loading="lazy" />
@@ -402,6 +378,43 @@
       </div>
     </section>
 
+    <section id="ucapan" class="section-ucapan fade-in">
+      <div class="container">
+        <div class="section-label">SAMPAIKAN</div>
+        <h2 class="section-title">Untaian Salam</h2>
+        <p class="section-intro">
+          Tinggalkan pesan cinta dan doa restu Anda untuk kelancaran ikatan suci kami.
+        </p>
+
+        <div class="wish-form-container fade-in">
+          <form id="wishForm" class="wish-form">
+            <div class="input-group">
+              <input type="text" id="guest_name" placeholder="Nama Anda" required />
+            </div>
+            <div class="input-group">
+              <textarea id="guest_message" rows="4" placeholder="Tuliskan ucapan & doa restu..." required></textarea>
+            </div>
+            <button type="submit" class="btn-send">
+              Kirim Ucapan
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M21.5 2.5a13.3 13.3 0 00-6 2.2 13.6 13.6 0 00-5.8 8.3M21.5 2.5a13.3 13.3 0 01-2.2 6 13.6 13.6 0 01-8.3 5.8M21.5 2.5L15 9"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M10.5 13.5l-6 6a2 2 0 000 2.8 2 2 0 002.8 0l6-6" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <div class="wishes-display fade-in" id="wishesDisplay">
+          <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); font-style: italic;">
+            Memuat untaian salam...
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ======================================================
          UCAPAN & DOA — Penutup
     ======================================================= -->
@@ -456,6 +469,102 @@
   <script src="data.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
+
+  <script type="module">
+    // 1. Import fungsi dari Firebase CDN
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    // 2. [GANTI] Tempel objek firebaseConfig milikmu di bawah ini
+    const firebaseConfig = {
+      apiKey: "AIzaSyBa_xlhjeqpWAf0e8_mwwzD-Da_oALvOmc",
+      authDomain: "undangan-syifadaffa.firebaseapp.com",
+      projectId: "undangan-syifadaffa",
+      storageBucket: "undangan-syifadaffa.firebasestorage.app",
+      messagingSenderId: "921185048282",
+      appId: "1:921185048282:web:ecf0fbd91f9d60bea4b7e3"
+    };
+
+    // 3. Inisialisasi Aplikasi dan Database Firestore
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // 4. Referensi Elemen HTML
+    const wishForm = document.getElementById("wishForm");
+    const wishesDisplay = document.getElementById("wishesDisplay");
+
+    // Fungsi keamanan sederhana untuk mencegah injeksi kode (XSS)
+    function escapeHtml(str) {
+      return str ? str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : "";
+    }
+
+    // 5. LOGIKA PENGIRIMAN DATA (WRITE)
+    if (wishForm) {
+      wishForm.addEventListener("submit", async (e) => {
+        e.preventDefault(); // Mencegah halaman reload
+
+        const nameInput = document.getElementById("guest_name");
+        const messageInput = document.getElementById("guest_message");
+        const btnSend = wishForm.querySelector(".btn-send");
+        const originalBtnText = btnSend.innerHTML;
+
+        // Ubah status tombol saat mengirim
+        btnSend.innerHTML = "Mengirim...";
+        btnSend.disabled = true;
+
+        try {
+          // Menyimpan dokumen baru ke koleksi "ucapan"
+          await addDoc(collection(db, "ucapan"), {
+            nama: nameInput.value,
+            pesan: messageInput.value,
+            tanggal: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
+            timestamp: serverTimestamp() // Waktu absolut dari server Firebase
+          });
+
+          // Reset form setelah sukses
+          wishForm.reset();
+          btnSend.innerHTML = "✓ Terkirim!";
+          setTimeout(() => {
+            btnSend.innerHTML = originalBtnText;
+            btnSend.disabled = false;
+          }, 2500);
+
+        } catch (error) {
+          console.error("Gagal mengirim ucapan: ", error);
+          btnSend.innerHTML = "Gagal Kirim";
+          setTimeout(() => {
+            btnSend.innerHTML = originalBtnText;
+            btnSend.disabled = false;
+          }, 2500);
+        }
+      });
+    }
+
+    // 6. LOGIKA PEMBACAAN DATA REAL-TIME (READ)
+    if (wishesDisplay) {
+      // Mengambil data dari koleksi "ucapan", diurutkan dari yang paling baru
+      const q = query(collection(db, "ucapan"), orderBy("timestamp", "desc"));
+
+      // onSnapshot akan mendengarkan perubahan data secara langsung (real-time)
+      onSnapshot(q, (snapshot) => {
+        wishesDisplay.innerHTML = ""; // Bersihkan daftar ucapan placeholder/lama
+
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          const card = document.createElement("div");
+          card.className = "wish-card";
+
+          card.innerHTML = `
+            <h4 class="wish-name">${escapeHtml(data.nama)}</h4>
+            <p class="wish-text">${escapeHtml(data.pesan)}</p>
+            <span class="wish-time">${data.tanggal || ''}</span>
+          `;
+
+          wishesDisplay.appendChild(card);
+        });
+      });
+    }
+  </script>
 </body>
 
 </html>

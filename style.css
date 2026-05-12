@@ -703,7 +703,7 @@ section {
   border-radius: var(--radius-xl);
   padding: 38px 30px;
   flex: 1;
-  min-width: 280px;
+  min-width: 305px;
   max-width: 390px;
   text-align: center;
   transition: var(--transition);
@@ -1098,11 +1098,181 @@ section {
 }
 
 /* ============================================================
+   REVISI: UNTAIAN SALAM (GUESTBOOK) — PREMIUM FINE-ART STYLE
+   ============================================================ */
+.section-ucapan {
+  text-align: center;
+  background-color: var(--bg-primary);
+  /* Mengikuti latar tekstur kertas utama */
+  border-top: 1px solid var(--bg-subtle);
+}
+
+/* 1. WADAH FORM: Dibuat menyatu dengan garis ganda yang lebih halus */
+.wish-form-container {
+  background: var(--bg-secondary);
+  /* Latar cream pudar agar lebih *soft* */
+  padding: 36px 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--bg-subtle);
+  box-shadow: var(--shadow-xs);
+  /* Bayangan sangat tipis */
+  margin-bottom: 48px;
+  position: relative;
+
+  /* Bingkai ganda vintage bernuansa emas */
+  outline: 1px solid var(--gold-pale);
+  outline-offset: -8px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+/* 2. KOLOM INPUT: Gaya isian kertas klasik (Underline Style) */
+.wish-form input,
+.wish-form textarea {
+  width: 100%;
+  padding: 12px 8px;
+  background-color: transparent;
+  /* Transparan menyatu dengan wadah */
+  border: none;
+  border-bottom: 1.5px solid var(--gold-pale);
+  /* Hanya garis bawah */
+  border-radius: 0;
+  /* Hilangkan lengkungan kotak */
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--navy);
+  transition: var(--transition-fast);
+}
+
+.wish-form input::placeholder,
+.wish-form textarea::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Efek elegan saat mulai mengetik */
+.wish-form input:focus,
+.wish-form textarea:focus {
+  outline: none;
+  border-bottom-color: var(--navy);
+  background-color: rgba(255, 255, 255, 0.4);
+  /* Efek *highlight* lembut */
+}
+
+/* TOMBOL KIRIM: Dibuat sedikit lebih ramping dan berkelas */
+.btn-send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--navy);
+  color: #FAFAF8;
+  padding: 12px 32px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-navy);
+  margin-top: 12px;
+}
+
+.btn-send svg {
+  width: 15px;
+  height: 15px;
+}
+
+.btn-send:hover {
+  background: var(--gold);
+  color: var(--navy);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-2px);
+}
+
+/* 1. Area daftar ucapan dibuat lebih bersih tanpa kotak kaku */
+.wishes-display {
+  max-height: 550px;
+  overflow-y: auto;
+  padding: 10px 20px 40px 10px;
+  text-align: center;
+  /* Rata tengah agar lebih puitis */
+}
+
+/* 2. Mengubah kartu menjadi lembaran memo tanpa background kotak */
+.wish-card {
+  background: transparent;
+  /* Hilangkan kotak putih */
+  padding: 24px 0;
+  margin-bottom: 0;
+  border: none;
+  box-shadow: none;
+  /* Hilangkan kesan modern */
+  position: relative;
+  transition: var(--transition);
+}
+
+/* 3. Menambahkan Ornamen Pembatas (Floral Divider) di bawah setiap pesan */
+.wish-card::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 20px;
+  margin: 20px auto 0;
+  /* Menggunakan gambar divider bunga mungil (SVG/PNG) */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q 25 0, 50 10 T 100 10' stroke='%23B8943A' fill='transparent' stroke-width='0.5'/%3E%3Ccircle cx='50' cy='10' r='1.5' fill='%23B8943A'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+}
+
+.wish-card:last-child::after {
+  display: none;
+  /* Pesan terakhir tidak butuh pembatas */
+}
+
+/* 4. Tipografi Nama Mempelai dibuat lebih "Script" atau miring */
+.wish-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+/* 5. Teks Ucapan dibuat sangat puitis */
+.wish-text {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-style: italic;
+  /* Esensi surat lama */
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+/* 6. Waktu/Tanggal dibuat sangat kecil dan elegan */
+.wish-time {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-top: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* ============================================================
    CLOSING
    ============================================================ */
 .section-closing {
   text-align: center;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
 }
 
 .closing-arabic {
