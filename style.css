@@ -202,8 +202,63 @@ section {
 }
 
 /* ============================================================
-   HERO SECTION — Tetap gelap (foto latar)
+   STYLE UNTUK LOGO SVG DI HERO SECTION
    ============================================================ */
+
+.hero-svg-mask {
+  width: 320px;
+  /* Sesuaikan rasio tinggi (aspek rasio) logomu, misal 200px atau gunakan aspect-ratio jika tahu ukurannya */
+  height: 270px;
+
+  /* Mewarnai siluet dengan warna Navy */
+  background-color: var(--navy-soft);
+
+  /* Memotong warna mengikuti bentuk file SVG */
+  -webkit-mask-image: url('assets/logoinisial.svg');
+  mask-image: url('assets/logoinisial.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.hero-names-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  /* Jarak ke elemen di bawahnya */
+  width: 100%;
+}
+
+.hero-logo-wrapper {
+  max-width: 480px;
+  /* Batasi lebar maksimal logo di desktop */
+  width: 85%;
+  /* Lebar relatif di layar kecil */
+  height: auto;
+  display: flex;
+  justify-content: center;
+  /* Memberikan sedikit kilau emas pada logo (opsional) */
+  filter: drop-shadow(0 2px 8px rgba(197, 160, 89, 0.3));
+}
+
+.hero-svg-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Pengaturan khusus untuk layar HP */
+@media (max-width: 480px) {
+  .hero-logo-wrapper {
+    max-width: 320px;
+    /* Logo sedikit diperkecil agar pas di layar kecil */
+  }
+}
+
 /* ============================================================
    HERO SECTION — Light Mode (Putih Cerah & Hangat)
    Menggunakan palet yang senada dengan Section Opening Ayat
@@ -1347,7 +1402,7 @@ section {
   width: 58px;
   height: 58px;
   border-radius: var(--radius-pill);
-  background: var(--navy);
+  background: var(--bg-primary);
   color: var(--gold-light);
   display: flex;
   align-items: center;
@@ -1359,8 +1414,8 @@ section {
 
 .audio-btn:hover {
   transform: scale(1.08);
-  background: var(--gold);
-  color: var(--navy);
+  background: var(--gold-pale);
+  color: var(--navy-soft);
   box-shadow: var(--shadow-gold);
 }
 
