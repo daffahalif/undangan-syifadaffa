@@ -146,7 +146,7 @@ section {
   letter-spacing: 0.46em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 12px;
+  margin-bottom: 2px;
 }
 
 .section-title {
@@ -206,16 +206,16 @@ section {
    ============================================================ */
 
 .hero-svg-mask {
-  width: 320px;
+  width: 300px;
   /* Sesuaikan rasio tinggi (aspek rasio) logomu, misal 200px atau gunakan aspect-ratio jika tahu ukurannya */
-  height: 270px;
+  height: 300px;
 
   /* Mewarnai siluet dengan warna Navy */
   background-color: var(--navy-soft);
 
   /* Memotong warna mengikuti bentuk file SVG */
-  -webkit-mask-image: url('assets/logoinisial.svg');
-  mask-image: url('assets/logoinisial.svg');
+  -webkit-mask-image: url('assets/LOGO\ INISIAL\ SD2.svg');
+  mask-image: url('assets/LOGO\ INISIAL\ SD2.svg');
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
