@@ -6,12 +6,12 @@ const DATA_UNDANGAN = {
     TglHijri: "25 Muharram 1447 H",
 
     // MEMPELAI
-    fotocpw: "/assets/cpw.jpg",
+    fotocpw: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1781686124/cpw_pl5vfk.jpg",
     cpw: "Bdn. Syifa Rasalhague Chandra, S.Tr. Keb.",
     Bcpw: "Bapak Johni Chandra, S.H., M.M.",
     Icpw: "Ibu Sri Mulyati, S.Pd.",
 
-    fotocpp: "/assets/cpp.png",
+    fotocpp: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1781686125/cpp_shmyue.png",
     cpp: "Daffa' Halif Muhammad, S.Kom.",
     Bcpp: "Bapak dr. Anas Makhfud, Sp.An-TI",
     Icpp: "Ibu dr. Lilik Maftuhatul Jannah, Sp.Rad.",
@@ -31,13 +31,16 @@ const DATA_UNDANGAN = {
     WaktuCountdown: "2026-07-12T10:00:00",
 
     // Galeri
-    galeri1: "/assets/foto 6.jpg",
-    galeri2: "/assets/foto 1.jpg",
-    galeri3: "/assets/foto 2.jpg",
-    galeri4: "/assets/foto 3.jpg",
-    galeri5: "/assets/foto 7.jpg",
-    galeri6: "/assets/cover.jpg",
-    galeri7: "/assets/cpw.jpg",
+    galeri1: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1782047271/Engagement_Syifa_Daffa-56_ewziet.jpg",
+    galeri2: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1781686126/foto_1_btyhyk.jpg",
+    galeri3: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1782046453/Engagement_Syifa_Daffa-72_swvnd7.jpg",
+    galeri4: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1781686201/SRK_6364_pwo1p1.jpg",
+    galeri5: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1781686219/SRK_6687_qzctjd.jpg",
+    galeri6: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1782047439/IMG_4242_eu7vih.jpg",
+    galeri7: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1782046900/IMG_1884.JPG_zxlbiq.jpg",
+    galeri8: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1782047438/IMG_4254_fqobkh.jpg",
+    galeri9: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1782046899/IMG_2200.JPG_zfecal.jpg",
+    galeri10: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1782047680/IMG_1400_xhqrgt.jpg",
 
     // Hadiah
     BankName: "Bank Central Asia (BCA)",

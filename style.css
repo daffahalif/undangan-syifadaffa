@@ -280,7 +280,7 @@ section {
   background-image:
     linear-gradient(160deg, rgba(255, 255, 255, 0.80) 0%, rgba(244, 241, 235, 0.6) 80%),
     /* url('/assets/cover.jpg'); */
-    url('https://i.pinimg.com/736x/df/02/1f/df021ffa1d31a69624406d7c398e1257.jpg');
+    url('https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1781687709/df021ffa1d31a69624406d7c398e1257_bcunev.jpg');
   /* url('https://i.pinimg.com/736x/e4/bf/7b/e4bf7b30791926b01a57b46f65df580a.jpg'); */
   background-size: cover;
   background-position: center top;
