@@ -6,12 +6,12 @@ const DATA_UNDANGAN = {
     TglHijri: "25 Muharram 1447 H",
 
     // MEMPELAI
-    fotocpw: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1781686124/cpw_pl5vfk.jpg",
+    fotocpw: "https://res.cloudinary.com/dlrxxfy7f/image/upload/v1781686124/cpw_pl5vfk.jpg",
     cpw: "Bdn. Syifa Rasalhague Chandra, S.Tr. Keb.",
     Bcpw: "Bapak Johni Chandra, S.H., M.M.",
     Icpw: "Ibu Sri Mulyati, S.Pd.",
 
-    fotocpp: "https://res.cloudinary.com/dlrxxfy7f/image/upload/q_auto/f_auto/v1781686125/cpp_shmyue.png",
+    fotocpp: "https://res.cloudinary.com/dlrxxfy7f/image/upload/v1781686125/cpp_shmyue.png",
     cpp: "Daffa' Halif Muhammad, S.Kom.",
     Bcpp: "Bapak dr. Anas Makhfud, Sp.An-TI",
     Icpp: "Ibu dr. Lilik Maftuhatul Jannah, Sp.Rad.",
